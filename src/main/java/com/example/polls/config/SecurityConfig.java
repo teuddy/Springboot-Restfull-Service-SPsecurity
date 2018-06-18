@@ -64,11 +64,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .cors()
                 .and()
-                .csrf()
+                .headers()
+                .frameOptions()
                 .disable()
+                .and()
+                .csrf()
+                .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(unauthorizedHandler)
                 .and()
