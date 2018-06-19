@@ -68,12 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors()
                 .and()
-                .headers()
-                .frameOptions()
-                .disable()
-                .and()
                 .csrf()
-                .and()
+                .disable()
                 .exceptionHandling()
                 .authenticationEntryPoint(unauthorizedHandler)
                 .and()
@@ -99,7 +95,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated();
-
         // Add our custom JWT security filter
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);// aqui se anade el filtro de JWT  a el los https indicados y el filtro de authentificacion
 
